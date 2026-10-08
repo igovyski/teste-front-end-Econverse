@@ -1,0 +1,157 @@
+@use '../../../../shared/styles/variables' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+.modal {
+  background: $color-white;
+  border-radius: 8px;
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  padding: 40px 32px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  border: none;
+  z-index: 1;
+
+  // Organiza imagem à esquerda e texto à direita diretamente
+  display: flex;
+  align-items: center;
+  gap: 36px;
+
+  @media (max-width: 620px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  color: $color-text-muted;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-text-main;
+  }
+}
+
+.productImage {
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+
+  .title {
+    font-size: 19px;
+    font-weight: 500;
+    color: $color-text-main;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .price {
+    font-size: 22px;
+    font-weight: 700;
+    color: $color-dark-blue;
+    margin-bottom: 14px;
+  }
+
+  .description {
+    font-size: 13px;
+    color: $color-text-muted;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .detailsLink {
+    display: inline-block;
+    font-size: 13px;
+    color: $color-dark-blue;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 22px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @media (max-width: 620px) {
+      justify-content: center;
+    }
+  }
+
+  .counter {
+    display: flex;
+    align-items: center;
+    border: 1px solid $color-dark-blue;
+    border-radius: 4px;
+    height: 40px;
+
+    button {
+      background: transparent;
+      border: none;
+      padding: 0 12px;
+      font-size: 16px;
+      cursor: pointer;
+      color: $color-dark-blue;
+    }
+
+    span {
+      min-width: 32px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: $color-text-main;
+    }
+  }
+
+  .buyButton {
+    flex: 1;
+    height: 40px;
+    background-color: $color-secondary;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #271c47;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
