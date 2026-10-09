@@ -3,12 +3,17 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.65);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.54); // Preto com 54% de preenchimento
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 16px;
+  box-sizing: border-box;
 }
 
 .backdrop {
@@ -22,136 +27,194 @@
 }
 
 .modal {
-  background: $color-white;
-  border-radius: 6px;
   position: relative;
-  width: 100%;
-  max-width: 680px;
-  padding: 40px 32px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  border: none;
   z-index: 1;
+  background: #ffffff;
+  width: 769px;
+  height: 299.26px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   display: flex;
-  align-items: center;
-  gap: 36px;
-
-  @media (max-width: 640px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  box-sizing: border-box;
 }
 
 .closeButton {
   position: absolute;
-  top: 14px;
-  right: 18px;
-  background: none;
+  top: 17px;   // Cota do topo no Figma
+  right: 29px; // Cota da direita no Figma
+  background: transparent;
   border: none;
-  font-size: 24px;
-  line-height: 1;
-  color: $color-text-muted;
+  width: 15px; // Largura no Figma
+  height: 13px; // Altura no Figma
+  padding: 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 
-  &:hover {
-    color: $color-text-main;
+  svg {
+    display: block;
+    width: 15px;
+    height: 13px;
   }
 }
 
-.productImage {
-  max-width: 220px;
-  height: auto;
-  object-fit: contain;
-  flex-shrink: 0;
+.imageWrapper {
+  position: absolute;
+  top: 56.48px;
+  left: 56px;
+  width: 247px;
+  height: 192.2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 247px;
+    height: 192.2px;
+    object-fit: contain;
+  }
 }
 
 .content {
-  flex: 1;
+  position: absolute;
+  top: 63px;
+  right: 51px;
+  width: 328px;
+  height: 198.41px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
 
-  .title {
-    font-size: 18px;
-    font-weight: 500;
-    color: $color-primary;
-    margin-bottom: 12px;
-    text-transform: uppercase;
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: #3f3f40;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: #3f3f40;
+  margin-top: 12px;
+}
+
+.description {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 150.5%;
+  letter-spacing: 0.05em;
+  color: #707070;
+  width: 290px;
+  margin: 18px 0 0 0;
+}
+
+.detailsLink {
+  width: 290px;
+  height: 10px;
+  font-family: 'Work Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  color: #3442b5; // Cor 'Azul' oficial do Figma
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  width: 310px;
+  height: 36px;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.counter {
+  box-sizing: border-box;
+  width: 110px;
+  height: 36px;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px; // Encaixa os ~13.5px e ~14.4px das margens externas dos botões
+  background-color: #ffffff;
+}
+
+.counterButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
-  .price {
-    font-size: 20px;
-    font-weight: 700;
-    color: $color-primary;
-    margin-bottom: 14px;
+  svg {
+    display: block;
   }
+}
 
-  .description {
-    font-size: 11px;
-    color: $color-text-muted;
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
+.counterValue {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #271c47; // Cor roxa oficial
+  user-select: none;
+  line-height: 1;
+}
 
-  .detailsLink {
-    display: inline-block;
-    font-size: 12px;
-    color: $color-primary;
-    font-weight: 600;
-    text-decoration: none;
-    margin-bottom: 22px;
+.buyButton {
+  box-sizing: border-box;
+  width: 188px;
+  height: 36px;
+  background-color: #f7ca11; // Amarelo oficial do protótipo
+  color: #271c47; // Roxo oficial do texto COMPRAR
+  border: none;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700; // Bold 700
+  text-transform: uppercase;
+  letter-spacing: 0; // 0% de espaçamento
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7.5px 58px; // Padding oficial do Figma
+  transition: opacity 0.15s ease;
 
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-
-    @media (max-width: 640px) {
-      justify-content: center;
-    }
-  }
-
-  .counter {
-    display: flex;
-    align-items: center;
-    border: 1px solid $color-border;
-    border-radius: 4px;
-    height: 40px;
-
-    button {
-      background: transparent;
-      border: none;
-      padding: 0 12px;
-      font-size: 16px;
-      cursor: pointer;
-      color: $color-primary;
-    }
-
-    span {
-      min-width: 28px;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 600;
-      color: $color-text-main;
-    }
-  }
-
-  // No Popup do Figma o botão de compra é AMARELO
-  .buyButton {
-    flex: 1;
-    height: 40px;
-    background-color: $color-accent-yellow;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 700;
-    color: $color-primary;
-    cursor: pointer;
-    text-transform: uppercase;
-
-    &:hover {
-      opacity: 0.9;
-    }
+  &:hover {
+    opacity: 0.9;
   }
 }
