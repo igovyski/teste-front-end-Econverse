@@ -1,15 +1,15 @@
-import React from 'react';
+import { Categories } from './features/categories/components/Categories';
 import { ShowcaseList } from './features/showcase/components/ShowcaseList';
-import './App.scss';
 
-export const App: React.FC = () => {
+function App() {
   return (
-    <div className="app-container">
-      <main>
-        <ShowcaseList />
-      </main>
-    </div>
+    <main>
+      {/* Aqui virão o Header e o Hero Banner depois */}
+      
+      <Categories />
+      <ShowcaseList />
+    </main>
   );
-};
+}
 
 export default App;

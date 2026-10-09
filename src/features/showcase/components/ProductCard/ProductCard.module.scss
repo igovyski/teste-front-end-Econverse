@@ -6,9 +6,9 @@
   min-width: 304px;
   height: 500px;
   background-color: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0px 3px 19px rgba(0, 0, 0, 0.08);
-  padding: 12px 13px 16px 13px; // Centraliza a imagem de 278.1px nos 304px (304 - 278 = 26 / 2 = 13px)
+  border-radius: 10px; // Raio de canto oficial do Figma
+  box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.22); // Sombra projetada oficial (Y:3, Blur:19, 22%)
+  padding: 12px 13px 16px 13px;
   display: flex;
   flex-direction: column;
   position: relative;
