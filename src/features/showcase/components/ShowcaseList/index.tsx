@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Product } from '../../types';
 import { getProducts } from '../../services/getProducts';
 import { ProductCard } from '../ProductCard';
@@ -14,13 +14,17 @@ const CATEGORIES = [
   'VER TODOS',
 ];
 
+const VISIBLE_CARDS = 4;
+const CARD_WIDTH = 304;
+const GAP = 18;
+const STEP = CARD_WIDTH + GAP; // 322px
+
 export const ShowcaseList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('CELULAR');
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -37,16 +41,14 @@ export const ShowcaseList: React.FC = () => {
     void fetchItems();
   }, []);
 
-  const handleScrollLeft = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -320, behavior: 'smooth' });
-    }
+  const maxIndex = Math.max(0, products.length - VISIBLE_CARDS);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : maxIndex));
   };
 
-  const handleScrollRight = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 320, behavior: 'smooth' });
-    }
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : 0));
   };
 
   return (
@@ -84,8 +86,8 @@ export const ShowcaseList: React.FC = () => {
           <button
             type="button"
             className={`${styles.arrowButton} ${styles.prevArrow}`}
-            onClick={handleScrollLeft}
-            aria-label="Ver produtos anteriores"
+            onClick={handlePrev}
+            aria-label="Ver produto anterior"
           >
             <svg
               width="8"
@@ -101,21 +103,39 @@ export const ShowcaseList: React.FC = () => {
             </svg>
           </button>
 
-          <div className={styles.carousel} ref={carouselRef}>
-            {products.map((product) => (
-              <ProductCard
-                key={product.productName}
-                product={product}
-                onOpenModal={setSelectedProduct}
-              />
-            ))}
+          <div className={styles.carouselViewport}>
+            <div
+              className={styles.carouselTrack}
+              style={{
+                transform: `translateX(-${currentIndex * STEP}px)`,
+              }}
+            >
+              {products.map((product, idx) => {
+                const isVisible =
+                  idx >= currentIndex && idx < currentIndex + VISIBLE_CARDS;
+
+                return (
+                  <div
+                    key={product.productName}
+                    className={`${styles.cardWrapper} ${
+                      isVisible ? styles.visibleCard : styles.hiddenCard
+                    }`}
+                  >
+                    <ProductCard
+                      product={product}
+                      onOpenModal={setSelectedProduct}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <button
             type="button"
             className={`${styles.arrowButton} ${styles.nextArrow}`}
-            onClick={handleScrollRight}
-            aria-label="Ver próximos produtos"
+            onClick={handleNext}
+            aria-label="Ver próximo produto"
           >
             <svg
               width="8"

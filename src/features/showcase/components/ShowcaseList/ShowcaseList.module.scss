@@ -3,7 +3,7 @@
 .showcaseSection {
   width: 100%;
   max-width: 1364px;
-  margin: 0 auto 60px auto; // Remove a margem superior duplicada
+  margin: 0 auto 60px auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   gap: 32px;
-  margin-bottom: 4px; // Distância exata de 4px mostrada no Figma
+  margin-bottom: 4px;
   width: 100%;
   max-width: 1280px;
 
@@ -39,7 +39,7 @@
     color: #3442b5;
     white-space: nowrap;
     margin: 0;
-    line-height: 45px; // Altura exata de 45px da caixa do título
+    line-height: 45px;
   }
 }
 
@@ -107,26 +107,45 @@
 
 .carouselContainer {
   position: relative;
-  width: 1270px; // Largura exata do Frame do carrossel no Figma
-  margin-top: 24px; // Espaço exato de 24px entre as abas e o carrossel
+  width: 1270px;
+  margin-top: 24px;
   box-sizing: border-box;
 }
 
-.carousel {
+.carouselViewport {
+  width: calc(100% + 40px);
+  margin-left: -20px;
+  height: 544px;
+  padding: 12px 20px 32px 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.carouselTrack {
   display: flex;
   gap: 18px;
-  width: calc(100% + 18px);
-  height: 524px;
-  margin: 0 -9px;
-  padding: 12px 9px;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  box-sizing: border-box;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.cardWrapper {
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+
+  &.visibleCard {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.hiddenCard {
+    opacity: 0;
+    visibility: hidden; // Desativa a renderização da sombra do card fora de foco
+  }
 }
 
 .arrowButton {
   position: absolute;
-  top: 246px; // Posição vertical exata indicada na régua
+  top: 246px;
   background: #ffffff;
   border: none;
   width: 32px;

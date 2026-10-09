@@ -6,22 +6,24 @@
   min-width: 304px;
   height: 500px;
   background-color: #ffffff;
-  border-radius: 10px; // Raio de canto oficial do Figma
-  box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.22); // Sombra projetada oficial (Y:3, Blur:19, 22%)
+  border-radius: 10px;
+  box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.22);
   padding: 12px 13px 16px 13px;
   display: flex;
   flex-direction: column;
   position: relative;
   text-align: left;
+  flex-shrink: 0;
+  scroll-snap-align: start; // Trava o card perfeitamente alinhado na borda
 }
 
 .imageWrapper {
   width: 100%;
-  height: 228px; // Altura exata da régua do Figma
+  height: 228px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 9px; // Distância de 9px até o texto
+  margin-bottom: 9px;
 
   img {
     max-width: 100%;
@@ -41,7 +43,7 @@
   line-height: 20px;
   color: #3f3f40;
   margin: 0;
-  height: 40px; // 2 linhas x 20px de altura
+  height: 40px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -56,7 +58,7 @@
   font-weight: 400;
   color: #808080;
   text-decoration: line-through;
-  margin-top: 18px; // Bate os 67px a partir da imagem (9 + 40 + 18 = 67px)
+  margin-top: 18px;
   line-height: 14px;
 }
 
@@ -76,7 +78,7 @@
   font-size: 12px;
   font-weight: 400;
   color: #3f3f40;
-  margin-top: 18px; // Bate a cota de 125px a partir da imagem
+  margin-top: 18px;
   line-height: 14px;
 }
 
@@ -86,7 +88,7 @@
   font-size: 12px;
   font-weight: 400;
   color: #3442b5;
-  margin-top: 11px; // Bate a cota de 150px a partir da imagem (125 + 14 + 11 = 150px)
+  margin-top: 11px;
   line-height: 14px;
 }
 
@@ -94,7 +96,7 @@
   box-sizing: border-box;
   width: 100%;
   height: 44px;
-  background-color: #3442B5;
+  background-color: #3442b5;
   color: #ffffff;
   border: none;
   border-radius: 4px;
