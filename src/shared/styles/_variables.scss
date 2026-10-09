@@ -1,12 +1,21 @@
-// Cores principais extraídas do layout do Figma
-$color-primary: #f71963;        // O rosa característico dos botões e títulos
-$color-primary-dark: #cc104e;   // Tom mais escuro para efeito de hover
-$color-secondary: #f7ca11;      // O amarelo do botão Comprar do modal
-$color-dark-blue: #041e50;      // O azul escuro dos textos de preço do modal
-$color-text-main: #3f3f40;      // Cinza chumbo dos textos comuns e títulos de card
-$color-text-muted: #8b8b8b;     // Cinza claro para descrições e preços riscados
-$color-border: #dedede;         // Linhas divisórias e abas
+// Cores do Figma Econverse
+$color-primary: #3442b5;          // Azul títulos
+$color-brand: #3019b2;            // Azul das categorias / botões de ação
+$color-accent-yellow: #f7ca11;    // Amarelo do botão de compra do popup
 $color-white: #ffffff;
+$color-category-inactive: #f4f4f4;// Fundo dos ícones de categoria inativos
+$color-border: #dedede;
 
-// Animações e transições
+// Cores de Tipografia
+$color-text-main: #3f3f40;
+$color-text-muted: #808080;
+
+// Sombras
+$shadow-category-active: 0px 2px 9px rgba(0, 0, 0, 0.22);
+$shadow-card: 0px 3px 19px rgba(0, 0, 0, 0.08);
+
+// Tipografia
+$font-family: 'Poppins', sans-serif;
+
+// Transições
 $transition-default: 0.2s ease-in-out;

@@ -87,7 +87,18 @@ export const ShowcaseList: React.FC = () => {
             onClick={handleScrollLeft}
             aria-label="Ver produtos anteriores"
           >
-            &#10094;
+            <svg
+              width="8"
+              height="13"
+              viewBox="0 0 8 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.46667 1.14424L6.33419 0L0 6.4L6.33419 12.8L7.46667 11.6558L2.26495 6.4L7.46667 1.14424Z"
+                fill="#3F3F40"
+              />
+            </svg>
           </button>
 
           <div className={styles.carousel} ref={carouselRef}>
@@ -106,7 +117,18 @@ export const ShowcaseList: React.FC = () => {
             onClick={handleScrollRight}
             aria-label="Ver próximos produtos"
           >
-            &#10095;
+            <svg
+              width="8"
+              height="13"
+              viewBox="0 0 8 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.46667 1.14424L6.33419 0L0 6.4L6.33419 12.8L7.46667 11.6558L2.26495 6.4L7.46667 1.14424Z"
+                fill="#3F3F40"
+              />
+            </svg>
           </button>
         </div>
       )}
