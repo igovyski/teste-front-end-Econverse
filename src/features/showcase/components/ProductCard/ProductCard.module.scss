@@ -8,13 +8,14 @@
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 3px 19px 0px rgba(0, 0, 0, 0.22);
-  padding: 12px 13px 16px 13px;
+  padding: 12px 13px 16px 13px; // 16px na base
   display: flex;
   flex-direction: column;
+  justify-content: space-between; // Distribui o conteúdo e empurra o botão para a base
   position: relative;
   text-align: left;
   flex-shrink: 0;
-  scroll-snap-align: start; // Trava o card perfeitamente alinhado na borda
+  scroll-snap-align: start;
 }
 
 .imageWrapper {
@@ -58,7 +59,7 @@
   font-weight: 400;
   color: #808080;
   text-decoration: line-through;
-  margin-top: 18px;
+  margin-top: 12px;
   line-height: 14px;
 }
 
@@ -78,7 +79,7 @@
   font-size: 12px;
   font-weight: 400;
   color: #3f3f40;
-  margin-top: 18px;
+  margin-top: 8px;
   line-height: 14px;
 }
 
@@ -88,7 +89,7 @@
   font-size: 12px;
   font-weight: 400;
   color: #3442b5;
-  margin-top: 11px;
+  margin-top: 8px;
   line-height: 14px;
 }
 
@@ -106,7 +107,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   cursor: pointer;
-  margin-top: 16px;
+  margin-top: 12px;
   display: flex;
   align-items: center;
   justify-content: center;

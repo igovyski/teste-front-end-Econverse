@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useId } from 'react';
 import type { Product } from '../../types';
 import { getProducts } from '../../services/getProducts';
 import { ProductCard } from '../ProductCard';
@@ -19,12 +19,25 @@ const CARD_WIDTH = 304;
 const GAP = 18;
 const STEP = CARD_WIDTH + GAP; // 322px
 
-export function ShowcaseList() {
+interface ShowcaseListProps {
+  readonly title?: string;
+  readonly showCategories?: boolean;
+  readonly subtitle?: string;
+  readonly onSubtitleClick?: () => void;
+}
+
+export function ShowcaseList({
+  title = 'Produtos relacionados',
+  showCategories = true,
+  subtitle,
+  onSubtitleClick,
+}: Readonly<ShowcaseListProps> = {}) {
   const [products, setProducts] = useState<readonly Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('CELULAR');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const titleId = useId();
 
   useEffect(() => {
     let isMounted = true;
@@ -62,38 +75,50 @@ export function ShowcaseList() {
   };
 
   return (
-    <section className={styles.showcaseSection} aria-labelledby="showcase-title">
+    <section className={styles.showcaseSection} aria-labelledby={titleId}>
       <header className={styles.header}>
         <div className={styles.titleWrapper}>
           <span className={styles.line} aria-hidden="true" />
-          <h2 id="showcase-title" className={styles.title}>
-            Produtos relacionados
+          <h2 id={titleId} className={styles.title}>
+            {title}
           </h2>
           <span className={styles.line} aria-hidden="true" />
         </div>
 
-        <nav aria-label="Categorias da vitrine">
-          <ul className={styles.categoryList}>
-            {CATEGORIES.map((category) => {
-              const isActive = activeCategory === category;
-              return (
-                <li key={category}>
-                  <button
-                    type="button"
-                    className={`${styles.categoryButton} ${isActive ? styles.active : ''}`}
-                    onClick={() => setActiveCategory(category)}
-                    aria-pressed={isActive}
-                  >
-                    {category}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        {showCategories ? (
+          <nav aria-label="Categorias da vitrine">
+            <ul className={styles.categoryList}>
+              {CATEGORIES.map((category) => {
+                const isActive = activeCategory === category;
+                return (
+                  <li key={category}>
+                    <button
+                      type="button"
+                      className={`${styles.categoryButton} ${isActive ? styles.active : ''}`}
+                      onClick={() => setActiveCategory(category)}
+                      aria-pressed={isActive}
+                    >
+                      {category}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        ) : (
+          subtitle && (
+            <button
+              type="button"
+              className={styles.viewAllButton}
+              onClick={onSubtitleClick}
+            >
+              {subtitle}
+            </button>
+          )
+        )}
       </header>
 
-{isLoading ? (
+      {isLoading ? (
         <output className={styles.loadingMessage}>
           Carregando produtos...
         </output>
@@ -134,7 +159,7 @@ export function ShowcaseList() {
 
                 return (
                   <div
-                    key={product.productName}
+                    key={`${product.productName}-${idx}`}
                     className={`${styles.cardWrapper} ${
                       isVisible ? styles.visibleCard : styles.hiddenCard
                     }`}
