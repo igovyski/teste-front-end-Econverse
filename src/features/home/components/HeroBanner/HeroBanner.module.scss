@@ -3,13 +3,7 @@
   width: 100%;
   max-width: 1440px;
   height: 390px;
-  margin: 0 auto 39px auto; // 39px até às Categorias[cite: 21]
-  background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    ),
-    url('/assets/images/banner-hero.png');
+  margin: 0 auto 39px auto;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,8 +22,8 @@
 
 .content {
   position: absolute;
-  top: 78px; // 78px do topo do banner[cite: 22]
-  left: 81px; // Alinhamento exato da caixa do título[cite: 22]
+  top: 78px;
+  left: 81px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -54,33 +48,33 @@
   line-height: 100%;
   letter-spacing: 0;
   color: #ffffff;
-  font-weight: 400; // 'nos produtos' em Regular[cite: 31]
-  margin: 18px 0 0 -3px; // 3px ligeiramente recuado para a esquerda[cite: 36]
+  font-weight: 400;
+  margin: 18px 0 0 -3px;
   white-space: nowrap;
 
   .highlight {
-    font-weight: 700; // '50% Off' em Bold[cite: 30]
-    color: #f7ca11; // Amarelo oficial[cite: 30]
+    font-weight: 700;
+    color: #f7ca11;
   }
 }
 
 .ctaButton {
   box-sizing: border-box;
-  width: 206px; //[cite: 26]
-  height: 50px; //[cite: 34]
-  padding: 7px 49px; //[cite: 34]
-  background-color: #f7ca11; //[cite: 34]
-  color: #271c47; //[cite: 33]
+  width: 206px;
+  height: 50px;
+  padding: 7px 49px;
+  background-color: #f7ca11;
+  color: #271c47;
   border: none;
-  border-radius: 5px; //[cite: 34]
+  border-radius: 5px;
   font-family: 'Poppins', sans-serif;
-  font-size: 16px; //[cite: 33]
-  font-weight: 600; //[cite: 33]
+  font-size: 16px;
+  font-weight: 600;
   line-height: normal;
   letter-spacing: 0;
   cursor: pointer;
   margin-top: 35px;
-  margin-left: 6px; // -3px do subtítulo + 9px para a direita = 6px à direita do título
+  margin-left: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
