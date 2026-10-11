@@ -32,8 +32,8 @@
   width: 128px;
   height: 128px;
   border-radius: 10px;
-  background-color: #f4f4f4; // Fundo inativo
-  box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.13); // Sombra exata do inativo (Y: 4, Blur: 11, 13%)
+  background-color: #f4f4f4;
+  box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.13);
   border: none;
   cursor: pointer;
   display: flex;
@@ -48,7 +48,7 @@
 
   &.activeCard {
     background-color: #ffffff; // Fundo ativo
-    box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.22); // Sombra exata do ativo (Y: 2, Blur: 9, 22%)
+    box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.22);
   }
 }
 

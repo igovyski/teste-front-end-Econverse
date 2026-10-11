@@ -13,7 +13,7 @@
 .container {
   width: 100%;
   height: 100%;
-  padding: 45.5px 81.5px 45.5px 80px; // 45.5px superior/inferior, 81.5px direita
+  padding: 45.5px 81.5px 45.5px 80px; 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,7 +55,6 @@
   margin: 0;
 }
 
-// Trava exata do container form no Figma: 639px x 71px
 .formArea {
   width: 639px;
   height: 71px;
@@ -81,7 +80,7 @@
 
 .input {
   box-sizing: border-box;
-  flex: 1; // Divide o espaço igualmente mantendo o total em 639px
+  flex: 1; 
   height: 45px;
   background-color: #ffffff;
   border: none;
@@ -105,7 +104,7 @@
 .submitButton {
   box-sizing: border-box;
   height: 45px;
-  padding: 0 40px; // 40px laterais com altura alinhada aos inputs
+  padding: 0 40px; 
   background-color: #f7ca11;
   color: #161615;
   border: none;

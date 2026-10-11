@@ -7,7 +7,6 @@
   box-sizing: border-box;
   position: relative;
 
-  // Linha divisória de 1280px exatos
   &::after {
     content: '';
     position: absolute;

@@ -5,9 +5,8 @@
   align-items: center;
   position: relative;
   z-index: 10;
-  background-color: transparent; // Fundo do header pai cuida do restante
+  background-color: transparent;
 
-  // Linha divisória de 1280px contida no topo
   &::before {
     content: '';
     position: absolute;
@@ -23,7 +22,7 @@
 
 .navList {
   width: 100%;
-  max-width: 1280px; // Largura do bloco branco que flutua
+  max-width: 1280px;
   height: 40px;
   background-color: #ffffff;
   display: flex;
