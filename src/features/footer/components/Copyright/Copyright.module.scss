@@ -1,9 +1,11 @@
+@use '@/shared/styles/variables' as *;
+
 .copyright {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
   height: 46.84px;
-  background-color: #ffffff;
+  background-color: $color-white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,10 +13,10 @@
 
   p {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: $font-family;
     font-size: 13px;
     font-weight: 300;
     line-height: normal;
-    color: #3f3f40;
+    color: $color-text-main;
   }
 }

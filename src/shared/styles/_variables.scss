@@ -3,19 +3,25 @@ $color-primary: #3442b5;          // Azul títulos
 $color-brand: #3019b2;            // Azul das categorias / botões de ação
 $color-accent-yellow: #f7ca11;    // Amarelo do botão de compra do popup
 $color-white: #ffffff;
-$color-category-inactive: #f4f4f4;// Fundo dos ícones de categoria inativos
+$color-surface: #f4f4f4;          // Fundo claro (cards de categoria inativos, rodapé)
+$color-category-inactive: $color-surface;// Fundo dos ícones de categoria inativos
 $color-border: #dedede;
+$color-navy: #271c47;             // Azul escuro (newsletter, texto de botões amarelos)
+$color-gray: #9f9f9f;             // Cinza de ícones/links inativos e placeholders
+$color-divider: #f0f0f0;          // Linhas divisórias sutis do header
 
 // Cores de Tipografia
 $color-text-main: #3f3f40;
+$color-text-secondary: #4e4e4e;
 $color-text-muted: #808080;
 
 // Sombras
 $shadow-category-active: 0px 2px 9px rgba(0, 0, 0, 0.22);
-$shadow-card: 0px 3px 19px rgba(0, 0, 0, 0.08);
+$shadow-card: 0px 3px 19px rgba(0, 0, 0, 0.22); // Valor real do card validado no Figma
 
 // Tipografia
 $font-family: 'Poppins', sans-serif;
+$font-family-secondary: 'Work Sans', sans-serif;
 
 // Transições
 $transition-default: 0.2s ease-in-out;

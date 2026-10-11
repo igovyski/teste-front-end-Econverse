@@ -1,6 +1,8 @@
+@use '@/shared/styles/variables' as *;
+
 .header {
   width: 100%;
-  background-color: #ffffff;
+  background-color: $color-white;
   display: flex;
   flex-direction: column;
   align-items: center;

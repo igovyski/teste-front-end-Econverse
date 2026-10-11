@@ -1,9 +1,28 @@
-import { EconverseLogo } from '../../../../shared/components/EconverseLogo';
+import { EconverseLogo } from '@/shared/components/EconverseLogo';
 import styles from './FooterNav.module.scss';
 
-const INSTITUTIONAL = ['Sobre Nós', 'Movimento', 'Trabalhe conosco'] as const;
-const HELP = ['Suporte', 'Fale Conosco', 'Perguntas Frequentes'] as const;
-const TERMS = ['Termos e Condições', 'Política de Privacidade', 'Troca e Devolução'] as const;
+interface FooterLink {
+  readonly label: string;
+  readonly href: string;
+}
+
+const INSTITUTIONAL: readonly FooterLink[] = [
+  { label: 'Sobre Nós', href: '#sobre-nos' },
+  { label: 'Movimento', href: '#movimento' },
+  { label: 'Trabalhe conosco', href: '#trabalhe-conosco' },
+];
+
+const HELP: readonly FooterLink[] = [
+  { label: 'Suporte', href: '#suporte' },
+  { label: 'Fale Conosco', href: '#fale-conosco' },
+  { label: 'Perguntas Frequentes', href: '#perguntas-frequentes' },
+];
+
+const TERMS: readonly FooterLink[] = [
+  { label: 'Termos e Condições', href: '#termos-e-condicoes' },
+  { label: 'Política de Privacidade', href: '#politica-de-privacidade' },
+  { label: 'Troca e Devolução', href: '#troca-e-devolucao' },
+];
 
 export function FooterNav() {
   return (
@@ -14,7 +33,7 @@ export function FooterNav() {
           <p className={styles.brandDescription}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <div className={styles.socialIcons} aria-label="Redes sociais">
+          <div className={styles.socialIcons} role="group" aria-label="Redes sociais">
             <a href="#instagram" aria-label="Instagram" className={styles.socialLink}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
@@ -87,9 +106,9 @@ export function FooterNav() {
           <div className={styles.column}>
             <h3 className={styles.columnTitle}>Institucional</h3>
             <ul className={styles.linkList}>
-              {INSTITUTIONAL.map((item) => (
-                <li key={item}>
-                  <a href={`#${item}`}>{item}</a>
+              {INSTITUTIONAL.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}>{link.label}</a>
                 </li>
               ))}
             </ul>
@@ -98,9 +117,9 @@ export function FooterNav() {
           <div className={styles.column}>
             <h3 className={styles.columnTitle}>Ajuda</h3>
             <ul className={styles.linkList}>
-              {HELP.map((item) => (
-                <li key={item}>
-                  <a href={`#${item}`}>{item}</a>
+              {HELP.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}>{link.label}</a>
                 </li>
               ))}
             </ul>
@@ -109,9 +128,9 @@ export function FooterNav() {
           <div className={styles.column}>
             <h3 className={styles.columnTitle}>Termos</h3>
             <ul className={styles.linkList}>
-              {TERMS.map((item) => (
-                <li key={item}>
-                  <a href={`#${item}`}>{item}</a>
+              {TERMS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}>{link.label}</a>
                 </li>
               ))}
             </ul>

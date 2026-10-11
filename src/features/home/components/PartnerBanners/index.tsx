@@ -1,4 +1,4 @@
-import defaultBannerBg from '../../../../../assets/images/banner-parceiros.png';
+import defaultBannerBg from '@/assets/images/banner-parceiros.png';
 import styles from './PartnerBanners.module.scss';
 
 export interface BannerItem {
@@ -47,7 +47,7 @@ export function PartnerBanners({
           >
             <div className={styles.overlay} aria-hidden="true" />
             <div className={styles.content}>
-              <h3 className={styles.title}>{banner.title}</h3>
+              <h2 className={styles.title}>{banner.title}</h2>
               <p className={styles.description}>{banner.description}</p>
               <a
                 href={banner.href}

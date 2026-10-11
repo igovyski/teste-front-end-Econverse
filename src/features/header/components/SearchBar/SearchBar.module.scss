@@ -1,3 +1,5 @@
+@use '@/shared/styles/variables' as *;
+
 .searchWrapper {
   width: 630px;
   height: 48px;
@@ -14,14 +16,14 @@
   border: none;
   background: transparent;
   outline: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
-  color: #4e4e4e;
+  color: $color-text-secondary;
 
   &::placeholder {
-    color: #9f9f9f;
+    color: $color-gray;
   }
 }
 

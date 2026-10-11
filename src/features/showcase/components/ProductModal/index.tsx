@@ -1,6 +1,6 @@
-import { useState, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type MouseEvent, type SyntheticEvent } from 'react';
 import type { Product } from '../../types';
-import { formatCurrency } from '../../../../shared/utils/formatCurrency';
+import { formatCurrency } from '@/shared/utils/formatCurrency';
 import styles from './ProductModal.module.scss';
 
 interface ProductModalProps {
@@ -15,8 +15,30 @@ export function ProductModal({
   onClose,
 }: Readonly<ProductModalProps>) {
   const [quantity, setQuantity] = useState(1);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const shouldRender = isOpen && product !== null;
 
-  if (!isOpen || !product) {
+  useEffect(() => {
+    const dialog = dialogRef.current;
+
+    if (!shouldRender || !dialog) {
+      return;
+    }
+
+    const previouslyFocused =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+    dialog.showModal();
+
+    return () => {
+      if (dialog.open) {
+        dialog.close();
+      }
+      previouslyFocused?.focus();
+    };
+  }, [shouldRender]);
+
+  if (!shouldRender) {
     return null;
   }
 
@@ -30,26 +52,27 @@ export function ProductModal({
     setQuantity((prev) => prev + 1);
   };
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDialogElement>) => {
-    if (event.key === 'Escape') {
+  // Escape dispara "cancel" no <dialog>; o fechamento é delegado ao pai.
+  const handleCancel = (event: SyntheticEvent<HTMLDialogElement>) => {
+    event.preventDefault();
+    onClose();
+  };
+
+  // O <dialog> ocupa a tela toda: clicar fora do .modal tem o próprio dialog como alvo.
+  const handleBackdropClick = (event: MouseEvent<HTMLDialogElement>) => {
+    if (event.target === event.currentTarget) {
       onClose();
     }
   };
 
   return (
     <dialog
+      ref={dialogRef}
       className={styles.overlay}
-      open
-      aria-modal="true"
-      onKeyDown={handleKeyDown}
+      onCancel={handleCancel}
+      onClick={handleBackdropClick}
       aria-labelledby="modal-product-title"
     >
-      <button
-        type="button"
-        className={styles.backdrop}
-        onClick={onClose}
-        aria-label="Fechar modal"
-      />
 
       <div className={styles.modal}>
         <button

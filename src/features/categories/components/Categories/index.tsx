@@ -1,20 +1,27 @@
 import { useState } from 'react';
+import technologyIcon from '@/assets/icons/monitor-tablet-smartphones.svg';
+import supermarketIcon from '@/assets/icons/supermercados.svg';
+import drinksIcon from '@/assets/icons/whiskey.svg';
+import toolsIcon from '@/assets/icons/ferramentas.svg';
+import healthIcon from '@/assets/icons/cuidados-de-saude.svg';
+import sportsIcon from '@/assets/icons/esportes.svg';
+import fashionIcon from '@/assets/icons/moda.svg';
 import styles from './Categories.module.scss';
 
 interface CategoryItem {
   readonly id: string;
   readonly label: string;
-  readonly iconPath: string;
+  readonly iconSrc: string;
 }
 
 const CATEGORIES = [
-  { id: 'tecnologia', label: 'Tecnologia', iconPath: '/assets/icons/monitor-tablet-smartphones.svg' },
-  { id: 'supermercado', label: 'Supermercado', iconPath: '/assets/icons/supermercados.svg' },
-  { id: 'bebidas', label: 'Bebidas', iconPath: '/assets/icons/whiskey.svg' },
-  { id: 'ferramentas', label: 'Ferramentas', iconPath: '/assets/icons/ferramentas.svg' },
-  { id: 'saude', label: 'Saúde', iconPath: '/assets/icons/cuidados-de-saude.svg' },
-  { id: 'esportes', label: 'Esportes e Fitness', iconPath: '/assets/icons/esportes.svg' },
-  { id: 'moda', label: 'Moda', iconPath: '/assets/icons/moda.svg' },
+  { id: 'tecnologia', label: 'Tecnologia', iconSrc: technologyIcon },
+  { id: 'supermercado', label: 'Supermercado', iconSrc: supermarketIcon },
+  { id: 'bebidas', label: 'Bebidas', iconSrc: drinksIcon },
+  { id: 'ferramentas', label: 'Ferramentas', iconSrc: toolsIcon },
+  { id: 'saude', label: 'Saúde', iconSrc: healthIcon },
+  { id: 'esportes', label: 'Esportes e Fitness', iconSrc: sportsIcon },
+  { id: 'moda', label: 'Moda', iconSrc: fashionIcon },
 ] as const satisfies readonly CategoryItem[];
 
 type CategoryId = (typeof CATEGORIES)[number]['id'];
@@ -34,13 +41,14 @@ export function Categories() {
                 type="button"
                 className={`${styles.categoryCard} ${isActive ? styles.activeCard : ''}`}
                 onClick={() => setSelectedId(cat.id)}
+                aria-label={cat.label}
                 aria-pressed={isActive}
               >
                 <img
-                  src={cat.iconPath}
+                  src={cat.iconSrc}
                   alt=""
                   aria-hidden="true"
-                  className={`${styles.icon} ${isActive ? styles.activeIcon : ''}`}
+                  className={styles.icon}
                   loading="lazy"
                 />
               </button>

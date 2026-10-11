@@ -1,10 +1,12 @@
-@use '../../../../shared/styles/variables' as *;
+@use '@/shared/styles/variables' as *;
 
 .overlay {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
+  max-width: none;
+  max-height: none;
   margin: 0;
   padding: 0;
   border: none;
@@ -14,22 +16,21 @@
   justify-content: center;
   z-index: 1000;
   box-sizing: border-box;
-}
 
-.backdrop {
-  position: absolute;
-  inset: 0;
-  background: transparent;
-  border: none;
-  width: 100%;
-  height: 100%;
-  cursor: default;
+  &:not([open]) {
+    display: none;
+  }
+
+  // O escurecimento já é feito pelo próprio .overlay
+  &::backdrop {
+    background: transparent;
+  }
 }
 
 .modal {
   position: relative;
   z-index: 1;
-  background: #ffffff;
+  background: $color-white;
   width: 769px;
   height: 299.26px;
   border-radius: 4px;
@@ -89,12 +90,12 @@
 }
 
 .title {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.05em;
   line-height: 1;
-  color: #3f3f40;
+  color: $color-text-main;
   text-transform: uppercase;
   margin: 0;
   white-space: nowrap;
@@ -104,17 +105,17 @@
 
 .price {
   display: block;
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.05em;
   line-height: 1;
-  color: #3f3f40;
+  color: $color-text-main;
   margin-top: 12px;
 }
 
 .description {
-  font-family: 'Work Sans', sans-serif;
+  font-family: $font-family-secondary;
   font-size: 10px;
   font-weight: 500;
   line-height: 150.5%;
@@ -127,13 +128,13 @@
 .detailsLink {
   width: 290px;
   height: 10px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: $font-family-secondary;
   font-style: normal;
   font-weight: 600;
   font-size: 11px;
   line-height: 100%;
   letter-spacing: 0.05em;
-  color: #3442b5;
+  color: $color-primary;
   text-decoration: none;
   margin-top: 10px;
   display: inline-block;
@@ -162,7 +163,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 14px;
-  background-color: #ffffff;
+  background-color: $color-white;
 }
 
 .counterButton {
@@ -186,10 +187,10 @@
 }
 
 .counterValue {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 16px;
   font-weight: 500;
-  color: #271c47;
+  color: $color-navy;
   user-select: none;
   line-height: 1;
 }
@@ -198,11 +199,11 @@
   box-sizing: border-box;
   width: 188px;
   height: 36px;
-  background-color: #f7ca11; 
-  color: #271c47; 
+  background-color: $color-accent-yellow; 
+  color: $color-navy; 
   border: none;
   border-radius: 4px;
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;

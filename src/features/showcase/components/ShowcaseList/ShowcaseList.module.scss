@@ -1,4 +1,5 @@
-@use '../../../../shared/styles/variables' as *;
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
 
 .showcaseSection {
   width: 100%;
@@ -29,14 +30,14 @@
   .line {
     flex: 1;
     height: 1px;
-    background-color: #dedede;
+    background-color: $color-border;
   }
 
   .title {
-    font-family: 'Poppins', sans-serif;
+    font-family: $font-family;
     font-size: 30px;
     font-weight: 700;
-    color: #3442b5;
+    color: $color-primary;
     white-space: nowrap;
     margin: 0;
     line-height: 45px;
@@ -48,10 +49,10 @@
   border: none;
   padding: 0;
   margin-top: 4px;
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 15px;
   font-weight: 700;
-  color: #3f3f40;
+  color: $color-text-main;
   cursor: pointer;
   letter-spacing: 0;
   line-height: 1.2;
@@ -96,31 +97,32 @@
   justify-content: center;
   align-items: center;
   padding: 12px 10px;
-  background: #ffffff;
+  background: $color-white;
   border: 1px solid #bdbdbd;
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 16px;
   font-weight: 700;
   line-height: 16px;
   text-transform: uppercase;
-  color: #3f3f40;
+  color: $color-text-main;
   cursor: pointer;
-  transition: color 0.2s ease-in-out;
+  transition: color $transition-default;
 
   &:hover {
-    color: #3442b5;
+    color: $color-primary;
   }
 
   &.active {
-    color: #3442b5;
+    color: $color-primary;
     position: relative;
     z-index: 1;
   }
 }
 
-.loadingMessage {
+.loadingMessage,
+.errorMessage {
   text-align: center;
-  color: #808080;
+  color: $color-text-muted;
   padding: 40px 0;
   font-size: 16px;
 }
@@ -166,7 +168,7 @@
 .arrowButton {
   position: absolute;
   top: 246px;
-  background: #ffffff;
+  background: $color-white;
   border: none;
   width: 32px;
   height: 32px;
@@ -206,4 +208,8 @@
   svg {
     transform: scaleX(-1) translateX(-1.5px);
   }
+}
+
+.visuallyHidden {
+  @include visually-hidden;
 }

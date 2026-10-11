@@ -1,6 +1,6 @@
-import { useEffect, useState, useId } from 'react';
+import { useState, useId } from 'react';
 import type { Product } from '../../types';
-import { getProducts } from '../../services/getProducts';
+import { useProducts } from '../../hooks/useProducts';
 import { ProductCard } from '../ProductCard';
 import { ProductModal } from '../ProductModal';
 import styles from './ShowcaseList.module.scss';
@@ -32,37 +32,11 @@ export function ShowcaseList({
   subtitle,
   onSubtitleClick,
 }: Readonly<ShowcaseListProps> = {}) {
-  const [products, setProducts] = useState<readonly Product[]>([]);
+  const { products, isLoading, error } = useProducts();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('CELULAR');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const titleId = useId();
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function fetchItems() {
-      try {
-        const data = await getProducts();
-        if (isMounted) {
-          setProducts(data);
-        }
-      } catch (error) {
-        console.error('Falha ao carregar produtos:', error);
-      } finally {
-        if (isMounted) {
-          setIsLoading(false);
-        }
-      }
-    }
-
-    void fetchItems();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   const maxIndex = Math.max(0, products.length - VISIBLE_CARDS);
 
@@ -86,7 +60,7 @@ export function ShowcaseList({
         </div>
 
         {showCategories ? (
-          <nav aria-label="Categorias da vitrine">
+          <div role="group" aria-label="Categorias da vitrine">
             <ul className={styles.categoryList}>
               {CATEGORIES.map((category) => {
                 const isActive = activeCategory === category;
@@ -104,7 +78,7 @@ export function ShowcaseList({
                 );
               })}
             </ul>
-          </nav>
+          </div>
         ) : (
           subtitle && (
             <button
@@ -122,8 +96,21 @@ export function ShowcaseList({
         <output className={styles.loadingMessage}>
           Carregando produtos...
         </output>
+      ) : error ? (
+        <p className={styles.errorMessage} role="alert">
+          Não foi possível carregar os produtos. Tente novamente mais tarde.
+        </p>
       ) : (
-        <div className={styles.carouselContainer}>
+        <div
+          className={styles.carouselContainer}
+          role="region"
+          aria-roledescription="carousel"
+          aria-labelledby={titleId}
+        >
+          <output className={styles.visuallyHidden}>
+            Exibindo produtos {Math.min(currentIndex + 1, products.length)} a{' '}
+            {Math.min(currentIndex + VISIBLE_CARDS, products.length)} de {products.length}
+          </output>
           <button
             type="button"
             className={`${styles.arrowButton} ${styles.prevArrow}`}

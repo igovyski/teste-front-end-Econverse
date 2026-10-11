@@ -1,3 +1,5 @@
+@use '@/shared/styles/variables' as *;
+
 .navBar {
   width: 100%;
   display: flex;
@@ -16,7 +18,7 @@
     width: 100%;
     max-width: 1280px;
     height: 1px;
-    background-color: #f0f0f0;
+    background-color: $color-divider;
   }
 }
 
@@ -24,7 +26,7 @@
   width: 100%;
   max-width: 1280px;
   height: 40px;
-  background-color: #ffffff;
+  background-color: $color-white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,22 +46,22 @@
 }
 
 .navLink {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
   text-transform: uppercase;
   text-decoration: none;
-  color: #9f9f9f;
+  color: $color-gray;
   white-space: nowrap;
   transition: color 0.15s ease;
 
   &:hover {
-    color: #3019b2;
+    color: $color-brand;
   }
 
   &.activeLink {
-    color: #3019b2;
+    color: $color-brand;
   }
 }
 

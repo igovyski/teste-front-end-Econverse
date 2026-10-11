@@ -1,11 +1,10 @@
-import { Suspense } from 'react';
-import { Header } from './features/header/components/Header';
-import { HeroBanner } from './features/home/components/HeroBanner';
-import { Categories } from './features/categories/components/Categories';
-import { ShowcaseList } from './features/showcase/components/ShowcaseList';
-import { PartnerBanners } from './features/home/components/PartnerBanners';
-import { BrandList } from './features/home/components/BrandList';
-import { Footer } from './features/footer/components/Footer';
+import { Header } from '@/features/header/components/Header';
+import { HeroBanner } from '@/features/home/components/HeroBanner';
+import { Categories } from '@/features/categories/components/Categories';
+import { ShowcaseList } from '@/features/showcase/components/ShowcaseList';
+import { PartnerBanners } from '@/features/home/components/PartnerBanners';
+import { BrandList } from '@/features/home/components/BrandList';
+import { Footer } from '@/features/footer/components/Footer';
 
 export function App() {
   return (
@@ -19,17 +18,13 @@ export function App() {
         <Categories />
 
         {/* 3. Vitrine Principal com Filtros */}
-        <Suspense fallback={<p style={{ textAlign: 'center', padding: '40px 0', color: '#808080' }}>Carregando vitrine...</p>}>
-          <ShowcaseList />
-        </Suspense>
+        <ShowcaseList />
 
         {/* 4. Primeiro Bloco de Banners Duplos */}
         <PartnerBanners />
 
         {/* 5. Segunda Vitrine (Ver todos) */}
-        <Suspense fallback={<p style={{ textAlign: 'center', padding: '40px 0', color: '#808080' }}>Carregando vitrine...</p>}>
-          <ShowcaseList showCategories={false} subtitle="Ver todos" />
-        </Suspense>
+        <ShowcaseList showCategories={false} subtitle="Ver todos" />
 
         {/* 6. Segundo Bloco de Banners Duplos */}
         <PartnerBanners />
@@ -38,9 +33,7 @@ export function App() {
         <BrandList />
 
         {/* 8. Terceira Vitrine (Ver todos) */}
-        <Suspense fallback={<p style={{ textAlign: 'center', padding: '40px 0', color: '#808080' }}>Carregando vitrine...</p>}>
-          <ShowcaseList showCategories={false} subtitle="Ver todos" />
-        </Suspense>
+        <ShowcaseList showCategories={false} subtitle="Ver todos" />
       </main>
 
       {/* 9. Footer Institucional */}

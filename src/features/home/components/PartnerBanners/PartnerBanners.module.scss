@@ -1,3 +1,5 @@
+@use '@/shared/styles/variables' as *;
+
 .section {
   width: 100%;
   display: flex;
@@ -66,21 +68,21 @@
 }
 
 .title {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 40px;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: 0;
-  color: #ffffff;
+  color: $color-white;
   margin: 0;
 }
 
 .description {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  color: #ffffff;
+  color: $color-white;
   max-width: 220px;
   margin: 8px 0 0 0;
 }
@@ -93,9 +95,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #f7ca11;
-  color: #271c47;
-  font-family: 'Poppins', sans-serif;
+  background-color: $color-accent-yellow;
+  color: $color-navy;
+  font-family: $font-family;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.05em;

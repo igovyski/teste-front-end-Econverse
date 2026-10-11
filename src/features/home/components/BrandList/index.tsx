@@ -1,4 +1,4 @@
-import { EconverseLogo } from '../../../../shared/components/EconverseLogo';
+import { EconverseLogo } from '@/shared/components/EconverseLogo';
 import styles from './BrandList.module.scss';
 
 interface BrandItem {
@@ -30,7 +30,7 @@ export function BrandList() {
                 className={styles.circle}
                 aria-label={`Filtrar por marca ${brand.name}`}
               >
-                <EconverseLogo width={117} height={37} />
+                <EconverseLogo width={117} height={37} aria-hidden="true" focusable="false" />
               </button>
             </li>
           ))}

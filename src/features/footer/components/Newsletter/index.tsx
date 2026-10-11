@@ -26,6 +26,9 @@ export function Newsletter() {
           <div className={styles.inputsRow}>
             <input
               type="text"
+              name="name"
+              autoComplete="name"
+              aria-label="Nome"
               placeholder="Digite seu nome"
               className={styles.input}
               value={name}
@@ -34,6 +37,9 @@ export function Newsletter() {
             />
             <input
               type="email"
+              name="email"
+              autoComplete="email"
+              aria-label="E-mail"
               placeholder="Digite seu e-mail"
               className={styles.input}
               value={email}

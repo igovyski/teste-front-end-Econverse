@@ -1,3 +1,5 @@
+@use '@/shared/styles/variables' as *;
+
 .section {
   width: 100%;
   display: flex;
@@ -18,11 +20,11 @@
 }
 
 .title {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 30px;
   font-weight: 700;
   line-height: normal;
-  color: #3442b5;
+  color: $color-primary;
   margin: 0 0 32px 0;
   text-align: center;
 }
@@ -52,7 +54,7 @@
   width: 211px;
   height: 211px;
   border-radius: 105.5px;
-  background-color: #ffffff;
+  background-color: $color-white;
   border: none;
   box-shadow: 0px 7px 20px 0px rgba(0, 0, 0, 0.13);
   display: flex;

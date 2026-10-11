@@ -1,3 +1,5 @@
+@use '@/shared/styles/variables' as *;
+
 .categoriesSection {
   width: 100%;
   max-width: 1160px;
@@ -32,7 +34,7 @@
   width: 128px;
   height: 128px;
   border-radius: 10px;
-  background-color: #f4f4f4;
+  background-color: $color-surface;
   box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.13);
   border: none;
   cursor: pointer;
@@ -47,8 +49,8 @@
   }
 
   &.activeCard {
-    background-color: #ffffff; // Fundo ativo
-    box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.22);
+    background-color: $color-white; // Fundo ativo
+    box-shadow: $shadow-category-active;
   }
 }
 
@@ -59,18 +61,18 @@
 }
 
 .categoryLabel {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
   letter-spacing: 0;
-  color: #4e4e4e;
+  color: $color-text-secondary;
   text-align: center;
   margin-top: 22px;
   white-space: nowrap;
 
   &.activeLabel {
     font-weight: 600;
-    color: #3019b2;
+    color: $color-brand;
   }
 }

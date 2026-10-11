@@ -1,5 +1,5 @@
 import type { Product } from '../../types';
-import { formatCurrency } from '../../../../shared/utils/formatCurrency';
+import { formatCurrency } from '@/shared/utils/formatCurrency';
 import styles from './ProductCard.module.scss';
 
 interface ProductCardProps {
@@ -20,9 +20,9 @@ export function ProductCard({ product, onOpenModal }: Readonly<ProductCardProps>
       <h3 className={styles.title}>{product.productName}</h3>
       <p className={styles.description}>{product.descriptionShort}</p>
 
-      <span className={styles.oldPrice}>
+      <del className={styles.oldPrice}>
         {formatCurrency(oldPrice)}
-      </span>
+      </del>
 
       <span className={styles.price}>
         {formatCurrency(product.price)}

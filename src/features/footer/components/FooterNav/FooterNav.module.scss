@@ -1,8 +1,10 @@
+@use '@/shared/styles/variables' as *;
+
 .footerNav {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  background-color: #f4f4f4;
+  background-color: $color-surface;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,11 +35,11 @@
 
 .brandDescription {
   width: 354px;
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 14px;
   font-weight: 300;
   line-height: normal;
-  color: #3f3f40;
+  color: $color-text-main;
   margin: 16px 0 32px 0;
 }
 
@@ -70,7 +72,7 @@
 .divider {
   width: 1px;
   height: 198px; // 198px exatos da Line 4
-  background-color: #dedede;
+  background-color: $color-border;
   margin-right: 0;
   flex-shrink: 0;
 
@@ -112,11 +114,11 @@
 }
 
 .columnTitle {
-  font-family: 'Poppins', sans-serif;
+  font-family: $font-family;
   font-size: 16px;
   font-weight: 700;
   line-height: 1;
-  color: #3f3f40;
+  color: $color-text-main;
   margin: 0 0 20px 0;
 }
 
@@ -133,16 +135,16 @@
   }
 
   li a {
-    font-family: 'Poppins', sans-serif;
+    font-family: $font-family;
     font-size: 13px;
     font-weight: 300;
     line-height: 1;
-    color: #808080;
+    color: $color-text-muted;
     text-decoration: none;
     transition: color 0.2s ease;
 
     &:hover {
-      color: #3442b5;
+      color: $color-primary;
     }
   }
 }
