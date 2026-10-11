@@ -2,7 +2,7 @@ import { TopBar } from '../TopBar';
 import { SearchBar } from '../SearchBar';
 import { HeaderActions } from '../HeaderActions';
 import { NavBar } from '../NavBar';
-import { EconverseLogo } from '../EconverseLogo';
+import { EconverseLogo } from '../../../../shared/components/EconverseLogo';
 import styles from './Header.module.scss';
 
 export function Header() {
