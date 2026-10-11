@@ -1,25 +1,41 @@
-import React, { useState } from 'react';
+import { useState, type ChangeEvent, type SubmitEvent } from 'react';
 import styles from './SearchBar.module.scss';
 
-export const SearchBar: React.FC = () => {
+interface SearchBarProps {
+  readonly onSearch?: (term: string) => void;
+}
+
+export function SearchBar({ onSearch }: SearchBarProps = {}) {
   const [searchTerm, setSearchTerm] = useState('');
 
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSearch?.(searchTerm.trim());
+  };
+
   return (
-    <div className={styles.searchWrapper}>
+    <form className={styles.searchWrapper} role="search" onSubmit={handleSubmit}>
       <input
-        type="text"
+        type="search"
         placeholder="O que você está buscando?"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleChange}
         className={styles.searchInput}
+        aria-label="Campo de busca"
       />
-      <button type="button" className={styles.searchButton} aria-label="Buscar">
+      <button type="submit" className={styles.searchButton} aria-label="Buscar">
         <svg
           width="23"
           height="23"
           viewBox="0 0 23 23"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
         >
           <path
             d="M19.375 10.1875C19.375 15.2616 15.2616 19.375 10.1875 19.375C5.11338 19.375 1 15.2616 1 10.1875C1 5.11338 5.11338 1 10.1875 1C15.2616 1 19.375 5.11338 19.375 10.1875Z"
@@ -37,6 +53,6 @@ export const SearchBar: React.FC = () => {
           />
         </svg>
       </button>
-    </div>
+    </form>
   );
-};
+}

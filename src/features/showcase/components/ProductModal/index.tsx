@@ -1,33 +1,49 @@
-import React, { useState } from "react";
-import type { Product } from "../../types";
-import { formatCurrency } from "../../../../shared/utils/formatCurrency";
-import styles from "./ProductModal.module.scss";
+import { useState, type KeyboardEvent } from 'react';
+import type { Product } from '../../types';
+import { formatCurrency } from '../../../../shared/utils/formatCurrency';
+import styles from './ProductModal.module.scss';
 
 interface ProductModalProps {
-  product: Product | null;
-  isOpen?: boolean;
-  onClose: () => void;
+  readonly product: Product | null;
+  readonly isOpen?: boolean;
+  readonly onClose: () => void;
 }
 
-export const ProductModal: React.FC<ProductModalProps> = ({
+export function ProductModal({
   product,
   isOpen = true,
   onClose,
-}) => {
+}: Readonly<ProductModalProps>) {
   const [quantity, setQuantity] = useState(1);
 
-  if (!isOpen || !product) return null;
+  if (!isOpen || !product) {
+    return null;
+  }
 
   const handleDecrease = () => {
-    if (quantity > 1) setQuantity((prev) => prev - 1);
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    }
   };
 
   const handleIncrease = () => {
     setQuantity((prev) => prev + 1);
   };
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLDialogElement>) => {
+    if (event.key === 'Escape') {
+      onClose();
+    }
+  };
+
   return (
-    <dialog className={styles.overlay} open aria-modal="true">
+    <dialog
+      className={styles.overlay}
+      open
+      aria-modal="true"
+      onKeyDown={handleKeyDown}
+      aria-labelledby="modal-product-title"
+    >
       <button
         type="button"
         className={styles.backdrop}
@@ -48,6 +64,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({
             viewBox="0 0 15 13"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
           >
             <path
               d="M1.5 1L13.5 12M13.5 1L1.5 12"
@@ -67,7 +85,9 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         </div>
 
         <div className={styles.content}>
-          <h2 className={styles.title}>{product.productName}</h2>
+          <h2 id="modal-product-title" className={styles.title}>
+            {product.productName}
+          </h2>
           <span className={styles.price}>{formatCurrency(product.price)}</span>
 
           <p className={styles.description}>
@@ -94,19 +114,21 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                   viewBox="0 0 14 2"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  focusable="false"
                 >
                   <path
                     d="M1 1H12.8462"
                     strokeWidth="2"
                     strokeLinecap="square"
                     strokeLinejoin="round"
-                    stroke={quantity > 1 ? "#271C47" : "#9F9F9F"}
+                    stroke={quantity > 1 ? '#271C47' : '#9F9F9F'}
                   />
                 </svg>
               </button>
 
               <span className={styles.counterValue}>
-                {String(quantity).padStart(2, "0")}
+                {String(quantity).padStart(2, '0')}
               </span>
 
               <button
@@ -121,6 +143,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                   viewBox="0 0 14 14"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  focusable="false"
                 >
                   <path
                     d="M6.92383 1V12.4545"
@@ -140,7 +164,11 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               </button>
             </div>
 
-            <button type="button" className={styles.buyButton}>
+            <button
+              type="button"
+              className={styles.buyButton}
+              aria-label={`Comprar ${quantity} unidade(s) de ${product.productName}`}
+            >
               COMPRAR
             </button>
           </div>
@@ -148,4 +176,4 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       </div>
     </dialog>
   );
-};
+}

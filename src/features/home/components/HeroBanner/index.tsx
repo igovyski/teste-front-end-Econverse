@@ -1,7 +1,10 @@
-import React from 'react';
 import styles from './HeroBanner.module.scss';
 
-export const HeroBanner: React.FC = () => {
+interface HeroBannerProps {
+  readonly onCtaClick?: () => void;
+}
+
+export function HeroBanner({ onCtaClick }: HeroBannerProps = {}) {
   return (
     <section className={styles.heroBanner} aria-label="Banner promocional">
       <div className={styles.container}>
@@ -14,11 +17,16 @@ export const HeroBanner: React.FC = () => {
           <p className={styles.subtitle}>
             <span className={styles.highlight}>50% Off</span> nos produtos
           </p>
-          <button type="button" className={styles.ctaButton}>
+          <button
+            type="button"
+            className={styles.ctaButton}
+            onClick={onCtaClick}
+            aria-label="Ver produtos em promoção"
+          >
             Ver produto
           </button>
         </div>
       </div>
     </section>
   );
-};
+}

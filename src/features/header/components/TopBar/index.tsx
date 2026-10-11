@@ -1,7 +1,6 @@
-import React from 'react';
 import styles from './TopBar.module.scss';
 
-export const TopBar: React.FC = () => {
+export function TopBar() {
   return (
     <div className={styles.topBar}>
       <div className={styles.container}>
@@ -14,6 +13,8 @@ export const TopBar: React.FC = () => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={styles.icon}
+            aria-hidden="true"
+            focusable="false"
           >
             <path
               d="M3.125 8.95833V4.375C3.125 4.20924 3.19085 4.05027 3.30806 3.93306C3.42527 3.81585 3.58424 3.75 3.75 3.75H16.25C16.4158 3.75 16.5747 3.81585 16.6919 3.93306C16.8092 4.05027 16.875 4.20924 16.875 4.375V8.95833C16.875 15.522 11.3042 17.6966 10.1919 18.0654C10.0675 18.1082 9.93246 18.1082 9.80811 18.0654C8.69578 17.6966 3.125 15.522 3.125 8.95833Z"
@@ -44,6 +45,8 @@ export const TopBar: React.FC = () => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={styles.icon}
+            aria-hidden="true"
+            focusable="false"
           >
             <path
               d="M18.75 9.375H13.75V6.25H17.0769C17.2018 6.25 17.3238 6.28743 17.4272 6.35746C17.5307 6.42749 17.6108 6.5269 17.6572 6.64288L18.75 9.375Z"
@@ -107,6 +110,8 @@ export const TopBar: React.FC = () => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={styles.icon}
+            aria-hidden="true"
+            focusable="false"
           >
             <path
               d="M2.5 4.375H17.5C17.8452 4.375 18.125 4.65482 18.125 5V15C18.125 15.3452 17.8452 15.625 17.5 15.625H2.5C2.15482 15.625 1.875 15.3452 1.875 15V5C1.875 4.65482 2.15482 4.375 2.5 4.375Z"
@@ -144,4 +149,4 @@ export const TopBar: React.FC = () => {
       </div>
     </div>
   );
-};
+}

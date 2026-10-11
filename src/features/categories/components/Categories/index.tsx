@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Categories.module.scss';
 
-// Importe ou use os SVGs locais para cada categoria
 interface CategoryItem {
-  id: string;
-  label: string;
-  iconPath: string; // ou ReactNode se estiver importando como componente
+  readonly id: string;
+  readonly label: string;
+  readonly iconPath: string;
 }
 
-const CATEGORIES: CategoryItem[] = [
+const CATEGORIES = [
   { id: 'tecnologia', label: 'Tecnologia', iconPath: '/assets/icons/monitor-tablet-smartphones.svg' },
   { id: 'supermercado', label: 'Supermercado', iconPath: '/assets/icons/supermercados.svg' },
   { id: 'bebidas', label: 'Bebidas', iconPath: '/assets/icons/whiskey.svg' },
@@ -16,16 +15,19 @@ const CATEGORIES: CategoryItem[] = [
   { id: 'saude', label: 'Saúde', iconPath: '/assets/icons/cuidados-de-saude.svg' },
   { id: 'esportes', label: 'Esportes e Fitness', iconPath: '/assets/icons/esportes.svg' },
   { id: 'moda', label: 'Moda', iconPath: '/assets/icons/moda.svg' },
-];
+] as const satisfies readonly CategoryItem[];
 
-export const Categories: React.FC = () => {
-  const [selectedId, setSelectedId] = useState<string>('tecnologia');
+type CategoryId = (typeof CATEGORIES)[number]['id'];
+
+export function Categories() {
+  const [selectedId, setSelectedId] = useState<CategoryId>('tecnologia');
 
   return (
     <nav className={styles.categoriesSection} aria-label="Categorias de produtos">
       <ul className={styles.categoriesList}>
         {CATEGORIES.map((cat) => {
           const isActive = cat.id === selectedId;
+
           return (
             <li key={cat.id} className={styles.categoryItem}>
               <button
@@ -39,6 +41,7 @@ export const Categories: React.FC = () => {
                   alt=""
                   aria-hidden="true"
                   className={`${styles.icon} ${isActive ? styles.activeIcon : ''}`}
+                  loading="lazy"
                 />
               </button>
               <span className={`${styles.categoryLabel} ${isActive ? styles.activeLabel : ''}`}>
@@ -50,4 +53,4 @@ export const Categories: React.FC = () => {
       </ul>
     </nav>
   );
-};
+}

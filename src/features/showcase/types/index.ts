@@ -1,11 +1,11 @@
 export interface Product {
-  productName: string;
-  descriptionShort: string;
-  photo: string;
-  price: number;
+  readonly productName: string;
+  readonly descriptionShort: string;
+  readonly photo: string;
+  readonly price: number;
 }
 
 export interface ProductsResponse {
-  success: boolean;
-  products: Product[];
+  readonly success: boolean;
+  readonly products: readonly Product[];
 }

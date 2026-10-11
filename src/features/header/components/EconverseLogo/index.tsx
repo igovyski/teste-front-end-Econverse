@@ -1,14 +1,22 @@
-import React from 'react';
+import type { ComponentProps } from 'react';
 
-export const EconverseLogo: React.FC = () => {
+type EconverseLogoProps = Readonly<ComponentProps<'svg'>>;
+
+export function EconverseLogo({
+  width = 139,
+  height = 42,
+  ...props
+}: EconverseLogoProps) {
   return (
     <svg
-      width="139"
-      height="42"
+      width={width}
+      height={height}
       viewBox="0 0 139 42"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
       aria-label="Econverse"
+      {...props}
     >
       {/* Círculo Amarelo com as letras 'ec' em corte */}
       <path
@@ -59,4 +67,4 @@ export const EconverseLogo: React.FC = () => {
       />
     </svg>
   );
-};
+}
